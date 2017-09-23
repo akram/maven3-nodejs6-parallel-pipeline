@@ -15,17 +15,19 @@ try {
       parallel ( 
         "backend": {
           node('maven35') {
-            stage("Compile backend")
-            unstash name:"src"
-            sh "mvn clean package -Popenshift"
-            stash name:"war", includes:"target/ROOT.war"
+            stage("Compile backend") {
+              unstash name:"src"
+              sh "mvn clean package -Popenshift"
+              stash name:"war", includes:"target/ROOT.war"
+            }
           }
         },
         "frontend": {
           node('nodejs6') {
-           stage("Compile frontend")
-  	   unstash name:"src"
-  	   sh "npm install ; ng build"
+           stage("Compile frontend") {
+  	     unstash name:"src"
+  	     sh "npm install ; ng build"
+           }
   	  }
   	}
       )
