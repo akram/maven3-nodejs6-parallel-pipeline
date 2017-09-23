@@ -1,0 +1,1 @@
+# maven3-nodejs6-parallel-pipeline
