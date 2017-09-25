@@ -20,7 +20,7 @@ try {
             stage("Compile backend") {
               unstash name:"backend"
               sh "pwd ; ls -la ; cd backend ; ls -la"
-              sh "mvn clean package -Popenshift"
+              sh "mvn clean package"
               stash name:"war", includes:"target/ROOT.war"
             }
           }
