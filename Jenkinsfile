@@ -19,7 +19,7 @@ try {
           node('maven35') {
             stage("Compile backend") {
               unstash name:"backend"
-              sh "pwd ; ls -la "
+              sh "pwd ; ls -la ; cd backend ; ls -la"
               sh "mvn clean package -Popenshift"
               stash name:"war", includes:"target/ROOT.war"
             }
@@ -28,8 +28,8 @@ try {
         "frontend": {
           node('nodejs6') {
            stage("Compile frontend") {
-  	     unstash name:"backend"
-             sh "pwd ; ls -la "
+  	     unstash name:"frontend"
+             sh "pwd ; ls -la ; cd frontend ; ls -la"
 	     sh "npm install ; ng build"
            }
   	  }
