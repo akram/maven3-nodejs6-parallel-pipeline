@@ -9,8 +9,8 @@ try {
           stage("Checkout") {
           //checkout scm
           git url: 'https://github.com/akram/angular-wildfly-basic-seed.git', branch: 'master'
-          stash name:"frontend", includes:"frontend/**"
-	  stash name:"backend", includes:"backend/**"
+          stash name:"frontend", includes:"frontend/"
+	  stash name:"backend", includes:"backend/"
           }
         }
       }
