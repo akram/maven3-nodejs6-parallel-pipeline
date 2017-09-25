@@ -21,7 +21,7 @@ try {
               unstash name:"backend"
               sh "pwd ; ls -la ; cd backend ; ls -la"
               sh "cd backend ; mvn clean package"
-              stash name:"war", includes:"backend/target/ROOT.war"
+              stash name:"war", includes:"backend/target/*.war"
             }
           }
         },
