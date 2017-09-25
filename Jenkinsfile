@@ -38,7 +38,7 @@ try {
       node {
             stage("Build Image") {
               unstash name:"war"
-              sh "ls -la ; pwd ; cd backend ; cd target ; oc start-build backend-image --from-file=target/ -n ${project}"
+              sh "ls -la ; pwd ; cd backend ; ls -la ; cd target; ls -la; oc start-build backend-image --from-file=. -n ${project}"
               openshiftVerifyBuild bldCfg: "backend-image", namespace: full-pipeline, waitTime: '20', waitUnit: 'min'
             }
             stage("Deploy") {
