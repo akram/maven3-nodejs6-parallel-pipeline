@@ -7,8 +7,10 @@ try {
         stage("Initialize") {
           project = env.PROJECT_NAME
           stage("Checkout") {
-          checkout scm
-          stash name:"src", includes:"**"
+          //checkout scm
+          git url: 'https://github.com/akram/angular-wildfly-basic-seed.git', branch: 'master'
+          stash name:"frontend", includes:"frontend/**"
+	  stash name:"backend", includes:"backend/**"
           }
         }
       }
@@ -16,7 +18,7 @@ try {
         "backend": {
           node('maven35') {
             stage("Compile backend") {
-              unstash name:"src"
+              unstash name:"backend"
               sh "mvn clean package -Popenshift"
               stash name:"war", includes:"target/ROOT.war"
             }
@@ -25,7 +27,7 @@ try {
         "frontend": {
           node('nodejs6') {
            stage("Compile frontend") {
-  	     unstash name:"src"
+  	     unstash name:"backend"
   	     sh "npm install ; ng build"
            }
   	  }
