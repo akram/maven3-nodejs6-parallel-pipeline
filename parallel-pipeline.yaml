@@ -11,7 +11,7 @@ spec:
   runPolicy: Serial
   source:
     git:
-      uri: git@github.com:akram/maven3-nodejs6-parallel-pipeline.git
+      uri: git@github.com:akram/parallel-pipeline.git
     sourceSecret:
       name: gitsecret
     type: Git
