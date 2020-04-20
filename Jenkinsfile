@@ -16,20 +16,24 @@ try {
       parallel ( 
         "backend": {
           node('maven') {
-            stage("Compile backend") {
-              unstash name:"backend"
-              sh "pwd ; ls -la ; cd backend ; ls -la"
-              sh "cd backend ; mvn clean package"
-              stash name:"war", includes:"backend/target/*.war"
+	    container('maven') {
+              stage("Compile backend") {
+                unstash name:"backend"
+                sh "pwd ; ls -la ; cd backend ; ls -la"
+                sh "cd backend ; mvn clean package"
+                stash name:"war", includes:"backend/target/*.war"
+	      }
             }
           }
         },
         "frontend": {
           node('nodejs') {
-           stage("Compile frontend") {
-  	     unstash name:"frontend"
-             sh "pwd ; ls -la ; cd frontend ; ls -la"
-	     sh "cd frontend ; npm install "
+            node('nodejs') {
+             stage("Compile frontend") {
+  	       unstash name:"frontend"
+               sh "pwd ; ls -la ; cd frontend ; ls -la"
+	       sh "cd frontend ; npm install "
+	     }
            }
   	  }
   	}
