@@ -15,7 +15,7 @@ try {
       }
       parallel ( 
         "backend": {
-          node('maven35') {
+          node('maven') {
             stage("Compile backend") {
               unstash name:"backend"
               sh "pwd ; ls -la ; cd backend ; ls -la"
@@ -25,7 +25,7 @@ try {
           }
         },
         "frontend": {
-          node('nodejs6') {
+          node('nodejs') {
            stage("Compile frontend") {
   	     unstash name:"frontend"
              sh "pwd ; ls -la ; cd frontend ; ls -la"
