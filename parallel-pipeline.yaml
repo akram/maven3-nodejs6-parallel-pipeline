@@ -11,17 +11,9 @@ spec:
   runPolicy: Serial
   source:
     git:
-      uri: git@github.com:akram/parallel-pipeline.git
-    sourceSecret:
-      name: gitsecret
+      uri: htts://github.com/akram/parallel-pipeline.git
     type: Git
   strategy:
     jenkinsPipelineStrategy:
       jenkinsfilePath: Jenkinsfile
     type: JenkinsPipeline
-  triggers:
-  - generic:
-      secret: hq58MHn4UOJKZOc4SDpP
-    type: Generic
-status:
-  lastVersion: 0
