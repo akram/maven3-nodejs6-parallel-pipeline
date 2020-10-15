@@ -11,7 +11,7 @@ spec:
   runPolicy: Serial
   source:
     git:
-      uri: htts://github.com/akram/parallel-pipeline.git
+      uri: https://github.com/akram/parallel-pipeline.git
     type: Git
   strategy:
     jenkinsPipelineStrategy:
