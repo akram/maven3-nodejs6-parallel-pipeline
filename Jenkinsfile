@@ -16,7 +16,7 @@ try {
       parallel ( 
         "backend": {
           node('maven') {
-	    container('maven') {
+	    container('jnlp') {
               stage("Compile backend") {
                 unstash name:"backend"
                 sh "pwd ; ls -la ; cd backend ; ls -la"
@@ -28,7 +28,7 @@ try {
         },
         "frontend": {
           node('nodejs') {
-            node('nodejs') {
+            container('jnlp') {
              stage("Compile frontend") {
   	       unstash name:"frontend"
                sh "pwd ; ls -la ; cd frontend ; ls -la"
